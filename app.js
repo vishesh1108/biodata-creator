@@ -2,7 +2,7 @@
    AURABIODATA APPLICATION JS CONTROLLER - MOBILE-ONLY WIZARD
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+const init = () => {
 
     // Main State Model
     const biodata = {
@@ -828,4 +828,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Boot step 1
     switchStep(1);
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
