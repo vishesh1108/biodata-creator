@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const customizerDrawerTrigger = document.getElementById('customizer-drawer-trigger');
     const closeBottomSheetBtn = document.getElementById('close-bottom-sheet-btn');
     const loadSampleBtn = document.getElementById('load-sample-btn');
+    const printBtn = document.getElementById('print-btn');
 
     // Customizer select elements
     const fontSelect = document.getElementById('font-family-select');
