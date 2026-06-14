@@ -186,7 +186,8 @@ const init = () => {
         } else if (stepNum === 3) {
             prevStepBtn.style.visibility = 'visible';
             customizerDrawerTrigger.style.display = 'none';
-            nextStepBtn.style.display = 'none'; // User must select a card design to go forward
+            nextStepBtn.style.display = 'inline-flex';
+            nextStepBtn.innerHTML = 'Customize <i class="fa-solid fa-chevron-right"></i>';
         } else if (stepNum === 4) {
             prevStepBtn.style.visibility = 'visible';
             customizerDrawerTrigger.style.display = 'inline-flex';
@@ -207,6 +208,8 @@ const init = () => {
             switchStep(2);
         } else if (currentStep === 2) {
             switchStep(3);
+        } else if (currentStep === 3) {
+            switchStep(4);
         } else if (currentStep === 4) {
             downloadPDF();
         }
@@ -811,6 +814,17 @@ const init = () => {
     if (printBtn) {
         printBtn.addEventListener('click', printBiodata);
     }
+
+    // Stepper navigation clicks
+    const stepIndicators = document.querySelectorAll('.step-indicator');
+    stepIndicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+            const targetStep = parseInt(indicator.getAttribute('data-step'), 10);
+            if (targetStep >= 1 && targetStep <= 4) {
+                switchStep(targetStep);
+            }
+        });
+    });
 
     /* ==========================================================================
        RUNTIME STARTUP
