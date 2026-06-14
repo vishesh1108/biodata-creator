@@ -596,7 +596,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selectedTheme === 'floral') prettyName = 'Floral Elegance';
         if (selectedTheme === 'heritage') prettyName = 'Golden Heritage';
         if (selectedTheme === 'vintage') prettyName = 'Vintage Classic';
-        activeTemplateLabel.textContent = `Live Preview (${prettyName})`;
+        
+        if (activeTemplateLabel) {
+            activeTemplateLabel.textContent = `Live Preview (${prettyName})`;
+        }
     });
 
     /* ==========================================================================
@@ -805,7 +808,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.print();
     }
 
-    printBtn.addEventListener('click', printBiodata);
+    if (printBtn) {
+        printBtn.addEventListener('click', printBiodata);
+    }
 
     /* ==========================================================================
        RUNTIME STARTUP
