@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AuraBiodata - Mobile App</title>
+    
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Create stunning traditional and modern marriage biodatas instantly using our mobile app interface. Add custom fields, upload photos, select templates, and download PDFs.">
+    <meta name="keywords" content="marriage biodata maker, mobile biodata creator, matrimonial profile, wedding resume, pdf biodata template">
+    <meta name="author" content="AuraBiodata Team">
+
+    <!-- Google Fonts for Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- SMARTPHONE CASING WRAPPER -->
+    <div id="mobile-viewport-wrapper">
+        
+        <!-- WIZARD STEPPER HEADER NAVBAR -->
+        <header id="wizard-navbar">
+            <div class="nav-logo">
+                <i class="fa-solid fa-feather-pointed logo-icon"></i>
+                <span>Aura<span>Biodata</span></span>
+            </div>
+            
+            <button id="load-sample-btn" class="btn-sample-sm" title="Prefill mock data">
+                <i class="fa-solid fa-database"></i> Sample
+            </button>
+        </header>
+
+        <!-- TOP STEP INDICATOR BAR -->
+        <nav id="stepper-progress">
+            <div class="step-indicator active" data-step="1" id="step-indicator-1">
+                <span class="step-num">1</span>
+            </div>
+            <div class="step-line" id="step-line-1"></div>
+            <div class="step-indicator" data-step="2" id="step-indicator-2">
+                <span class="step-num">2</span>
+            </div>
+            <div class="step-line" id="step-line-2"></div>
+            <div class="step-indicator" data-step="3" id="step-indicator-3">
+                <span class="step-num">3</span>
+            </div>
+            <div class="step-line" id="step-line-3"></div>
+            <div class="step-indicator" data-step="4" id="step-indicator-4">
+                <span class="step-num">4</span>
+            </div>
+        </nav>
+
+        <!-- MAIN APP CONTENT FLOW PANEL -->
+        <div id="mobile-step-container">
+
+            <!-- STEP 1: DETAILS PANEL -->
+            <div id="editor-step-1" class="step-editor-content active">
+                <div class="editor-header">
+                    <h2>Enter Details</h2>
+                    <p>Standard fields can be customized or deleted. Tap "+ Add Custom Field" to append new rows.</p>
+                </div>
+                
+                <!-- Dynamic forms container -->
+                <div id="dynamic-form-container">
+                    <!-- Javascript will render dynamic form categories here -->
+                </div>
+            </div>
+
+            <!-- STEP 2: PHOTO PANEL -->
+            <div id="editor-step-2" class="step-editor-content">
+                <div class="editor-header">
+                    <h2>Upload Photo</h2>
+                    <p>Add a high-quality portrait photo for the header.</p>
+                </div>
+
+                <div class="upload-controls-container">
+                    <div class="photo-upload-zone" id="drop-zone">
+                        <i class="fa-solid fa-cloud-arrow-up cloud-icon"></i>
+                        <p>Drag & drop photo here or <span>Browse</span></p>
+                        <span class="upload-tip">Supports JPG, PNG, WebP</span>
+                        <input type="file" id="photo-input" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="photo-preview-container" id="photo-preview-container" style="display: none;">
+                        <img id="upload-preview-img" src="" alt="Preview">
+                        <button id="remove-photo-btn" class="btn-danger-sm"><i class="fa-solid fa-trash-can"></i> Remove Photo</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3: SHOWCASE PANEL (GRID SELECTION) -->
+            <div id="wizard-showcase-view" class="step-editor-content">
+                <div class="editor-header text-center">
+                    <h2>Choose Template</h2>
+                    <p>Select one of the generated designs to customize and export.</p>
+                </div>
+
+                <div id="showcase-grid-container">
+                    <!-- Cards with live previews -->
+                    <div class="showcase-card" data-select-theme="heritage">
+                        <div class="showcase-thumbnail-wrapper">
+                            <div class="showcase-sheet-container" id="showcase-sheet-heritage"></div>
+                        </div>
+                        <div class="showcase-card-meta">
+                            <h3>Golden Heritage</h3>
+                            <button class="btn-select-theme">Select & Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card" data-select-theme="minimal">
+                        <div class="showcase-thumbnail-wrapper">
+                            <div class="showcase-sheet-container" id="showcase-sheet-minimal"></div>
+                        </div>
+                        <div class="showcase-card-meta">
+                            <h3>Modern Minimal</h3>
+                            <button class="btn-select-theme">Select & Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card" data-select-theme="floral">
+                        <div class="showcase-thumbnail-wrapper">
+                            <div class="showcase-sheet-container" id="showcase-sheet-floral"></div>
+                        </div>
+                        <div class="showcase-card-meta">
+                            <h3>Floral Elegance</h3>
+                            <button class="btn-select-theme">Select & Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card" data-select-theme="navy">
+                        <div class="showcase-thumbnail-wrapper">
+                            <div class="showcase-sheet-container" id="showcase-sheet-navy"></div>
+                        </div>
+                        <div class="showcase-card-meta">
+                            <h3>Royal Navy</h3>
+                            <button class="btn-select-theme">Select & Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="showcase-card" data-select-theme="vintage">
+                        <div class="showcase-thumbnail-wrapper">
+                            <div class="showcase-sheet-container" id="showcase-sheet-vintage"></div>
+                        </div>
+                        <div class="showcase-card-meta">
+                            <h3>Vintage Classic</h3>
+                            <button class="btn-select-theme">Select & Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 4: FINAL CANVAS VIEW PANEL -->
+            <div id="editor-step-4" class="step-editor-content">
+                <div class="editor-header">
+                    <h2>Final Selection</h2>
+                    <p>Customize styles or tap download below to save.</p>
+                </div>
+                
+                <!-- Scaled layout canvas container -->
+                <div id="preview-canvas-container">
+                    <div id="preview-scale-wrapper">
+                        <div id="biodata-sheet" class="theme-heritage font-heritage">
+                            <!-- Canvas drawn dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /mobile-step-container -->
+
+        <!-- BOTTOM NAVIGATION BAR CONTROLLER -->
+        <footer id="editor-nav-bar">
+            <button id="prev-step-btn" class="btn-nav-prev" style="visibility: hidden;">
+                <i class="fa-solid fa-chevron-left"></i> Back
+            </button>
+            
+            <!-- Contextual customize triggers (Visible only in Step 4) -->
+            <button id="customizer-drawer-trigger" class="btn-nav-customize" style="display: none;">
+                <i class="fa-solid fa-palette"></i> Style
+            </button>
+            
+            <button id="next-step-btn" class="btn-nav-next">
+                Next <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </footer>
+
+        <!-- FLOATING EYE PREVIEW BUTTON (FAB) - Visible only in Step 1 & 2 -->
+        <button id="floating-preview-btn" class="fab-preview-btn" title="View live A4 preview sheet">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+
+        <!-- SLIDE-UP DYNAMIC PREVIEW MODAL OVERLAY -->
+        <div id="preview-modal-overlay">
+            <header class="modal-header">
+                <h3>A4 Live Preview</h3>
+                <button id="close-preview-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </header>
+            <div class="modal-body">
+                <div id="modal-scale-wrapper">
+                    <!-- Renders a clone or destination sheet dynamically -->
+                    <div id="modal-biodata-sheet" class="theme-heritage font-heritage"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE-UP BOTTOM SHEET CUSTOMIZER DRAWER -->
+        <div id="customizer-bottom-sheet">
+            <header class="sheet-header-drawer">
+                <div class="drawer-handle"></div>
+                <div class="drawer-header-meta">
+                    <h3>Design Options</h3>
+                    <button id="close-bottom-sheet-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </header>
+            <div class="sheet-drawer-body">
+                
+                <div class="control-group">
+                    <label>Accent Color</label>
+                    <div class="color-preset-picker">
+                        <button class="color-preset active" data-color="#b8860b" style="background-color: #b8860b;"></button>
+                        <button class="color-preset" data-color="#1b365d" style="background-color: #1b365d;"></button>
+                        <button class="color-preset" data-color="#0f5257" style="background-color: #0f5257;"></button>
+                        <button class="color-preset" data-color="#722f37" style="background-color: #722f37;"></button>
+                        <button class="color-preset" data-color="#2d3142" style="background-color: #2d3142;"></button>
+                        <div class="custom-color-wrapper">
+                            <input type="color" id="custom-color-picker" value="#b8860b">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="font-family-select">Typography Pairing</label>
+                    <select id="font-family-select" class="premium-select">
+                        <option value="heritage">Classic Serif (Playfair + Montserrat)</option>
+                        <option value="minimal">Modern Sans (Outfit + Inter)</option>
+                        <option value="floral">Elegant Script (Cormorant + Lato)</option>
+                        <option value="navy">Formal Capital (Cinzel + Poppins)</option>
+                        <option value="vintage">Literary Retro (Lora + Lora)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="template-swapper-select">Layout Theme</label>
+                    <select id="template-swapper-select" class="premium-select">
+                        <option value="heritage">Golden Heritage</option>
+                        <option value="minimal">Modern Minimal</option>
+                        <option value="floral">Floral Elegance</option>
+                        <option value="navy">Royal Navy</option>
+                        <option value="vintage">Vintage Classic</option>
+                    </select>
+                </div>
+                
+            </div>
+        </div>
+
+    </div> <!-- /mobile-viewport-wrapper -->
+
+    <!-- html2pdf.js CDN library for client-side PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <!-- Main JS Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

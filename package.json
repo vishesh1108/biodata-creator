@@ -1,0 +1,15 @@
+{
+  "name": "biodata-creator",
+  "version": "1.0.0",
+  "description": "Premium Wedding & Professional Biodata Creator",
+  "scripts": {
+    "dev": "npx -y http-server . -p 3000"
+  },
+  "keywords": [
+    "biodata",
+    "creator",
+    "marriage"
+  ],
+  "author": "AuraBiodata",
+  "license": "ISC"
+}
