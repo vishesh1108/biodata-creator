@@ -328,6 +328,45 @@ document.addEventListener('DOMContentLoaded', () => {
         return null;
     }
 
+    // Format YYYY-MM-DD -> 15th August 1996
+    function formatDate(dateStr) {
+        if (!dateStr) return '';
+        const date = new Date(dateStr);
+        if (isNaN(date.getTime())) return dateStr;
+        
+        const day = date.getDate();
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const month = monthNames[date.getMonth()];
+        const year = date.getFullYear();
+        
+        let suffix = 'th';
+        if (day === 1 || day === 21 || day === 31) suffix = 'st';
+        else if (day === 2 || day === 22) suffix = 'nd';
+        else if (day === 3 || day === 23) suffix = 'rd';
+        
+        return `${day}${suffix} ${month} ${year}`;
+    }
+
+    // Format HH:MM -> 08:45 AM
+    function formatTime(timeStr) {
+        if (!timeStr) return '';
+        const parts = timeStr.split(':');
+        if (parts.length < 2) return timeStr;
+        
+        let hours = parseInt(parts[0], 10);
+        const minutes = parts[1];
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        const strHours = hours < 10 ? '0' + hours : hours;
+        
+        return `${strHours}:${minutes} ${ampm}`;
+    }
+
     function renderSheet(container, themeName) {
         if (!container) return;
 
